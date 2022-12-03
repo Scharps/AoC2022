@@ -54,10 +54,10 @@ fn part_2(input: &str) {
 }
 
 fn score_char(c: char) -> u32 {
-    let c = c as u8;
+    let c_num = c as u8;
     match c {
-        65..=90 => (c - CAP_START + 1) as u32 + 26,
-        97..=122 => (c - LOWER_START + 1) as u32,
+        'A'..='Z' => (c_num - CAP_START + 1) as u32 + 26,
+        'a'..='z' => (c_num - LOWER_START + 1) as u32,
         _ => panic!(),
     }
 }
