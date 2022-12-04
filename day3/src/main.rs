@@ -39,11 +39,7 @@ fn part_2(input: &str) {
                         .chars()
                         .chain(concat[1].chars())
                         .chain(concat[2].chars())
-                        .find(|c| {
-                            concat[0].contains(*c)
-                                && concat[1].contains(*c)
-                                && concat[2].contains(*c)
-                        })
+                        .find(|c| concat.iter().all(|inventory| inventory.contains(*c)))
                     {
                         return (total + score_char(c), concat);
                     }
