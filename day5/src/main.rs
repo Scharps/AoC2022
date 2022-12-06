@@ -40,7 +40,9 @@ fn part_1(input: &str) {
                 stacks[to - 1].push_front(buff.pop_front().unwrap())
             }
         });
-    println!("{stacks:?}")
+    for stack in stacks {
+        println!("{}", stack.pop_front().unwrap())
+    }
 }
 
 fn part_2(input: &str) {
@@ -77,5 +79,7 @@ fn part_2(input: &str) {
                 stacks[to - 1].push_front(buff.pop_back().unwrap())
             }
         });
-    println!("{stacks:?}")
+    for stack in stacks {
+        println!("{}", stack.pop_front().unwrap())
+    }
 }
