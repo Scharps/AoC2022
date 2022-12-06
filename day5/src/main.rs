@@ -40,7 +40,7 @@ fn part_1(input: &str) {
                 stacks[to - 1].push_front(buff.pop_front().unwrap())
             }
         });
-    for stack in stacks {
+    for mut stack in stacks {
         println!("{}", stack.pop_front().unwrap())
     }
 }
@@ -79,7 +79,7 @@ fn part_2(input: &str) {
                 stacks[to - 1].push_front(buff.pop_back().unwrap())
             }
         });
-    for stack in stacks {
+    for mut stack in stacks {
         println!("{}", stack.pop_front().unwrap())
     }
 }
