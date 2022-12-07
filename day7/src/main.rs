@@ -1,10 +1,13 @@
-use std::collections::HashMap;
+use std::{
+    collections::HashMap,
+    path::{Path, PathBuf},
+};
 
 fn main() {
     let input = include_str!("../input.txt");
 
-    let mut dir_stack: Vec<&str> = vec![];
-    let mut dir_size: HashMap<&str, usize> = HashMap::new();
+    let mut dir_stack = PathBuf::new();
+    let mut dir_size: HashMap<PathBuf, usize> = HashMap::new();
     input
         .lines()
         .map(|line| line.split_ascii_whitespace())
@@ -25,9 +28,9 @@ fn main() {
             x => {
                 if x.chars().all(|c| c.is_numeric()) {
                     let size = x.parse::<usize>().unwrap();
-                    for dir in dir_stack.iter() {
+                    for dir in dir_stack.ancestors() {
                         dir_size
-                            .entry(dir)
+                            .entry(dir.to_owned())
                             .and_modify(|s| *s += size)
                             .or_insert(size);
                     }
